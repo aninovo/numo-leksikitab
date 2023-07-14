@@ -55,6 +55,7 @@ header {
     font-style: normal;
     font-weight: 200;
     line-height: normal;
+    cursor: default;
 }
 
 .right{
