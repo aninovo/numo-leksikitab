@@ -1,0 +1,251 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+html {
+    /*
+        full-page layout
+    */
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    /*
+        regular font
+    */
+    color: #2F2F30;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    /*
+        full-page layout
+    */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+/*
+    HEADER PART
+*/
+
+header {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    background: #699FDF;
+}
+
+.title {
+    display: block;
+    flex-grow: 0;
+    padding: 0px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+.right{
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+#search-bar {
+    display: flex;
+    justify-self: stretch;
+    flex-grow: 1;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+
+#search-box {
+    display: flex;
+    justify-self: stretch;
+    flex-grow: 1;
+    height: 48px;
+    min-width: 180px;
+    max-width: 360px;
+    padding: 8px 16px;
+    align-items: center;
+    border-radius: 8px;
+    border-width: 0;
+    background: #FFF;
+    /*
+        input text style
+    */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+    #search-box::placeholder {
+        color: #C3D4F2;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    #search-box:focus {
+        outline: none;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+#search-button {
+    display: flex;
+    height: 48px;
+    padding: 8px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border-width: 0;
+    background: #FFF;
+    color: #699FDF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+}
+
+    #search-button:hover {
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    #search-button:active {
+        outline: none;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    }
+
+/*
+    MAIN PART
+*/
+
+main {
+    display: flex;
+    padding: 16px;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 8px;
+    flex: 1 0 0;
+    align-self: stretch;
+    flex-wrap: wrap;
+    background: #FFF;
+    flex-grow: 1;
+}
+
+.result {
+    display: flex;
+    min-width: 180px;
+    max-width: 480px;
+    align-items: flex-start;
+    justify-self: stretch;
+    flex-grow: 1;
+    gap: 8px;
+    border: 1px solid #C3D4F2;
+    /*
+        pseudo-shadow
+    */
+    border-bottom-width: 3px;
+    border-right-width: 2px;
+}
+
+.entry {
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.headword {
+    color: #2F2F30;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.word-class {
+    /*color: #C3D4F2;*/
+    color: #699FDF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 100;
+    line-height: normal;
+}
+
+.translation {
+    color: #2F2F30;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+
+/*
+    FOOTER
+*/
+
+footer {
+    display: flex;
+    padding: 8px 48px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    background: #EDEFF2;
+}
+
+    footer a {
+        color: #2F2F30;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 200;
+        line-height: normal;
+        text-decoration: none;
+    }
+
+    /*
+        MoBILE
+    */
+@media only screen and (max-width: 600px) {
+    .title {
+        display: none;
+    }
+    header {
+        padding: 0px;
+    }
+    main {
+        padding: 16px;
+    }
+    footer {
+        padding: 4px 16px;
+    }
+}
