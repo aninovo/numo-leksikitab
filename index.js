@@ -34,15 +34,23 @@ function onSubmit() {
     if (words.length > 1 || results.length == 0) {
         results = results.concat(window.dictionary.lookUp(query));
         // look up phrases and individual words, also in the other language
-        for (const word of words) {
-
-            results = results.concat(window.dictionary.lookUp(word));
-        }
+        if (words.length > 1)
+            for (const word of words)
+                results = results.concat(window.dictionary.lookUp(word));
         // filter out duplicates
         results = results.filter(function (item, pos) {
             return results.indexOf(item) == pos;
         });
     }
+    // look for an other > Numo translation
+    results = results.concat(window.dictionary.lookUp(query, direct = false, reverse = true));
+    if (words.length > 1)
+        for (const word of words)
+            results = results.concat(window.dictionary.lookUp(word, direct = false, reverse = true));
+    // filter out duplicates
+    results = results.filter(function (item, pos) {
+        return results.indexOf(item) == pos;
+    });
     formatResults(results);
 
     return false

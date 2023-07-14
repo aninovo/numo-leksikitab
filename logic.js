@@ -31,16 +31,20 @@ class Dictionary {
      * 
      * @param {string} word - the word or phrase to look up
      */
-    lookUp(word) {
+    lookUp(word, direct=true, reverse=false) {
         let results = [];
-        let lookupA = this.indexDirect.lookUp(word);
-        if (lookupA != null)
-            for (const entry of lookupA)
-                results.push([entry]);
-        let lookupB = this.indexReverse.lookUp(word);
-        if (lookupB != null)
-            for (const entry of lookupB)
-                results.push([entry]);
+        if (direct) {
+            let lookupA = this.indexDirect.lookUp(word);
+            if (lookupA != null)
+                for (const entry of lookupA)
+                    results.push([entry]);
+        }
+        if (reverse) {
+            let lookupB = this.indexReverse.lookUp(word);
+            if (lookupB != null)
+                for (const entry of lookupB)
+                    results.push([entry]);
+        }
         return results;
     }
 
@@ -56,6 +60,7 @@ class Dictionary {
             let prefixExpected = true;
             let suffixExpected = false;
             let rootFound = false;
+            let pronounFound = false;
             for (const entry of analysis) {
                 switch (entry.Class) {
                     case 'prefix':
@@ -82,12 +87,15 @@ class Dictionary {
                         prefixExpected = true;
                         suffixExpected = true;
                         rootFound = true;
+                    case 'Pronoun':
+                        pronounFound = true;
                         break;
                     default:
                         break;
                 }
             }
-            if (analysis.length > 1 && !rootFound) return false;
+            if (analysis.length > 1 && !rootFound) return false; // no words made of just suffixes and prefixes
+            if (analysis.length > 1 && pronounFound) return false; // no compounds with pronouns
             return true;
         }
         function analyzeRec(word, previousAnalysis, analyses, index) {
